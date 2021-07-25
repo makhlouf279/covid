@@ -37,9 +37,9 @@ const Recherche = (props) => {
             <Card.Header onClick={() => {
               props.history.push({
                 
-                pathname: `/pays/${unPays.alpha3Code}`,
+                pathname: `/pays/${unPays.name}`,
                 state: {
-                  countryName: `${unPays.Country}`
+                  countryName: `${unPays.name}`
                 }
               })
             }}>{unPays.name}

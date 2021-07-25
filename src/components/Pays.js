@@ -6,13 +6,12 @@ const Pays = (props) => {
   console.log(props)
   
 const [data, setData]= useState([])
-const [countryName, setCountryName] = useState("");
 
 const getCovidData = async () => {
     try {
-        const res = await fetch(`https://api.covid19api.com/country/tunisia`);
+        const res = await fetch(`https://api.covid19api.com/country/${props.location.state.countryName}`);
         const actualData = await res.json();
-        console.table(actualData);
+        // console.table(actualData);
         const uniqData= actualData[actualData.length-1];
         setData(uniqData)
  
