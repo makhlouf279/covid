@@ -5,14 +5,16 @@ import { Link } from 'react-router-dom';
 const Pays = (props) => {
   console.log(props)
   
-const [pays, setData]= useState([])
+const [data, setData]= useState([])
+const [countryName, setCountryName] = useState("");
 
 const getCovidData = async () => {
     try {
-        const res = await fetch(`https://api.covid19api.com/total/country/${Country}`);
+        const res = await fetch(`https://api.covid19api.com/country/tunisia`);
         const actualData = await res.json();
-        console.log(actualData)
-       // setData(actualData) 
+        console.table(actualData);
+        const uniqData= actualData[actualData.length-1];
+        setData(uniqData)
  
     } catch (err) {
         console.log(err)
@@ -30,14 +32,15 @@ useEffect(() => {
   return (
     <Container>
       
-   <h1>{pays.Country}</h1>
-      {/* affciher la populayion de pays selectionne */}
-      <p>Cas Confirmees : {pays.confirmed}</p>
-      {/* //pour affiher la uperficie de pays selectionne */}
-      <p>Cas de Decees: {pays.deaths}</p>
-  {/*     pour afficher la position geometrique de pays selectionne */}
-      <p>Cas Retablis: {pays.recovered}</p>
-    </Container>
+    <h1>{data.Country}</h1>
+       {/* affciher la populayion de pays selectionne */}
+       <p>Date : {data.Date}</p>
+       <p>Cas Confirmees : {data.Confirmed}</p>
+       {/* //pour affiher la uperficie de pays selectionne */}
+       <p>Cas de Decees: {data.Deaths}</p>
+   {/*     pour afficher la position geometrique de pays selectionne */}
+       <p>Cas Retablis: {data.Recovered}</p>
+     </Container>
   )
 }
 

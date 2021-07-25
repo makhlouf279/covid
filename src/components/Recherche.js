@@ -13,7 +13,7 @@ const Recherche = (props) => {
   /*   onClick() elle s`execute a chaque fois on click sur le boutton Recherche
     qui va faire appelle a l`API qui vas retourner une reponse (Data) sous forme de json qui 
     contient nom de tout les pays  */
-    /* fetch(`https://restcountries.eu/rest/v2/name/${nom}`) */
+   
     fetch(`https://restcountries.eu/rest/v2/name/${nom}`)
       .then((response) => response.json())
       .then((data) => setPays(data))
@@ -39,8 +39,7 @@ const Recherche = (props) => {
                 
                 pathname: `/pays/${unPays.alpha3Code}`,
                 state: {
-                  pays: unPays
-                  
+                  countryName: `${unPays.Country}`
                 }
               })
             }}>{unPays.name}
